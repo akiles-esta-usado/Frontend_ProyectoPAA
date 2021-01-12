@@ -3,11 +3,16 @@ import { Image, View, StyleSheet, Alert, TouchableOpacity, } from 'react-native'
 import { Asset } from 'expo-asset';
 import AppLoading from 'expo-app-loading';
 import { Container, Header, Content, Text, Card, CardItem, Left, Body, Right,Title} from 'native-base'
+import Login from './components/login'
 let styles = StyleSheet.create({
     image: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
+    },
+    login:{
+        flex:1,
+        marginTop:2
     }
 })
 
@@ -22,15 +27,7 @@ const App =()=>{
                 <Right />
             </Header>
             <Content>
-            <Card>
-                <CardItem>
-                    <Body>
-                        <Text>
-                            Bienvenido al sistema
-                        </Text>
-                    </Body>
-                </CardItem>
-            </Card>
+                <Login styles={styles}></Login>
             </Content>
         </Container>
     )
