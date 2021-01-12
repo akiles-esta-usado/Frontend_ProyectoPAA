@@ -3,23 +3,23 @@ import { NavigationContainer } from '@react-navigation/native'
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Ionicons } from '@expo/vector-icons';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
 import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { Container, Header, Content, Left, Body, Right, Title } from 'native-base'
 import Login from './components/login'
+import Register from './components/register'
+
 let styles = StyleSheet.create({
     image: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
     },
-    login: {
-        flex: 1,
-        marginTop: 2
-    }
 })
+const Stack = createStackNavigator();
 
 const App = () => {
 
@@ -44,6 +44,7 @@ const App = () => {
     );
 
     return (
+
         <NavigationContainer>
             <Container>
                 <Header >
@@ -53,9 +54,14 @@ const App = () => {
                     </Body>
                     <Right />
                 </Header>
-                <Content>
-                    <Login styles={styles}></Login>
-                </Content>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name="Login"
+                        component={Login}
+
+                    />
+                    <Stack.Screen name="Register" component={Register} />
+                </Stack.Navigator>
             </Container>
         </NavigationContainer>
     )
