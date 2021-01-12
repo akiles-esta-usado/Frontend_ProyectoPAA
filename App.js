@@ -1,8 +1,8 @@
 import React from 'react';
-import { Image, Text, View, StyleSheet, Alert, TouchableOpacity, } from 'react-native';
+import { Image, View, StyleSheet, Alert, TouchableOpacity, } from 'react-native';
 import { Asset } from 'expo-asset';
 import AppLoading from 'expo-app-loading';
-
+import { Container, Header, Content, Text, Card, CardItem, Left, Body, Right,Title} from 'native-base'
 let styles = StyleSheet.create({
     image: {
         flex: 1,
@@ -11,42 +11,28 @@ let styles = StyleSheet.create({
     }
 })
 
-export default class App extends React.Component {
-    state = {
-        isReady: false,
-    };
-
-    render() {
-        if (!this.state.isReady) {
-            return (
-                <AppLoading
-                    startAsync={this._cacheResourcesAsync}
-                    onFinish={() => this.setState({ isReady: true })}
-                    onError={console.warn}
-                />
-            );
-        }
-
-        return (
-            <View style={styles.image}>
-                <TouchableOpacity
-                    onPress={() => Alert.alert("Hola amiguete, presionaste la imagen :)")}
-                >
-
-                    <Image source={require('./assets/test_image.jpg')} />
-
-                </TouchableOpacity>
-            </View>
-        );
-    }
-
-    async _cacheResourcesAsync() {
-        const images = [require('./assets/test_image.jpg')];
-
-        const cacheImages = images.map(image => {
-            return Asset.fromModule(image).downloadAsync();
-        });
-        return Promise.all(cacheImages);
-    }
-
+const App =()=>{
+    return(
+        <Container>
+            <Header >
+                <Left />
+                <Body>
+                    <Title>ServiceNow</Title>
+                </Body>
+                <Right />
+            </Header>
+            <Content>
+            <Card>
+                <CardItem>
+                    <Body>
+                        <Text>
+                            Bienvenido al sistema
+                        </Text>
+                    </Body>
+                </CardItem>
+            </Card>
+            </Content>
+        </Container>
+    )
 }
+export default App
