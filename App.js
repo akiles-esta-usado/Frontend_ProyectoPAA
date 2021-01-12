@@ -1,7 +1,15 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, View, StyleSheet, Alert, TouchableOpacity, } from 'react-native';
 import { Asset } from 'expo-asset';
 import AppLoading from 'expo-app-loading';
+
+let styles = StyleSheet.create({
+    image: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    }
+})
 
 export default class App extends React.Component {
     state = {
@@ -20,8 +28,14 @@ export default class App extends React.Component {
         }
 
         return (
-            <View style={{ flex: 1 }}>
-                <Image source={require('./assets/test_image.jpg')} />
+            <View style={styles.image}>
+                <TouchableOpacity
+                    onPress={() => Alert.alert("Hola amiguete, presionaste la imagen :)")}
+                >
+
+                    <Image source={require('./assets/test_image.jpg')} />
+
+                </TouchableOpacity>
             </View>
         );
     }
@@ -34,4 +48,5 @@ export default class App extends React.Component {
         });
         return Promise.all(cacheImages);
     }
+
 }
