@@ -3,25 +3,16 @@ import { NavigationContainer } from '@react-navigation/native'
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Ionicons } from '@expo/vector-icons';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import React, { useState } from 'react';
+import { Container, Header, Left, Body, Right, Title } from 'native-base'
 
-
-import React, { useState, useEffect } from 'react';
-import { StyleSheet } from 'react-native';
-import { Container, Header, Content, Left, Body, Right, Title } from 'native-base'
 import Login from './components/login'
 import Register from './components/register'
 import Direcciones from './components/direcciones'
 
 
-let styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-    },
-})
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const App = () => {
 
@@ -56,14 +47,11 @@ const App = () => {
                     </Body>
                     <Right />
                 </Header>
-                <Stack.Navigator>
-                    <Stack.Screen
-                        name="Login"
-                        component={Login}
-                    />
-                    <Stack.Screen name="Register" component={Register} />
-                    <Stack.Screen name="Direcciones" component={Direcciones} />
-                </Stack.Navigator>
+                <Drawer.Navigator>
+                    <Drawer.Screen name="Login" component={Login} />
+                    <Drawer.Screen name="Register" component={Register} />
+                    <Drawer.Screen name="Direcciones" component={Direcciones} />
+                </Drawer.Navigator>
             </Container>
         </NavigationContainer>
     )
