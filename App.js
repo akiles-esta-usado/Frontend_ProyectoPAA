@@ -11,6 +11,8 @@ import { StyleSheet } from 'react-native';
 import { Container, Header, Content, Left, Body, Right, Title } from 'native-base'
 import Login from './components/login'
 import Register from './components/register'
+import Direcciones from './components/direcciones'
+
 
 let styles = StyleSheet.create({
     image: {
@@ -58,9 +60,9 @@ const App = () => {
                     <Stack.Screen
                         name="Login"
                         component={Login}
-
                     />
                     <Stack.Screen name="Register" component={Register} />
+                    <Stack.Screen name="Direcciones" component={Direcciones} />
                 </Stack.Navigator>
             </Container>
         </NavigationContainer>
