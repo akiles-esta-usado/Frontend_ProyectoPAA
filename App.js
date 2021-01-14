@@ -17,7 +17,7 @@ const Drawer = createDrawerNavigator();
 const App = () => {
 
     const [isReady, setReady] = useState(false)
-
+    const [jwt,setJWT]=useState('')
 
     async function loadFonts() {
         await Font.loadAsync({

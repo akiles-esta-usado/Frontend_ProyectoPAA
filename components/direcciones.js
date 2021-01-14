@@ -28,6 +28,9 @@ const Direcciones=({navigation,route})=>{
                 axios.put("https://proyecto-app-web-2020-2.herokuapp.com/users/direccion/" + route.params.id, form_direccion).then(
                     (res)=>{
                         console.log("postactualizacion",res.data);
+                        console.log("usuario creado correctamente");
+                        console.log("Ahora será redirigido al login");
+                        navigation.navigate("Login")
                     }
                 )
             }

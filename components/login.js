@@ -2,17 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { Container, Header, Content, Form, Item, Input ,Button,Text,Card} from 'native-base';
 
 const Login = ({navigation})=>{
-    const [user,setUser] = useState("")
+    const [email,setEmail] = useState("")
     const [passwd,setPasswd] = useState("")
+    const [verify,setVerify]= useState(false)
     const [conditional, setcond] = useState(false)
     let message=''
     const register=()=>{
         navigation.navigate('Register', { name: 'Jane' })
     }
     const onPress = () => {
-        console.log(user,passwd);
+        console.log(email,passwd);
         // Conexión a login 
-
+        let form={
+            email:email,
+            contrasena:contrasena
+        }
+        axios.post("https://proyecto-app-web-2020-2.herokuapp.com/users/login", form).then(
+            (res) => {
+                console.log(res.data);
+                if (res.data.permiso === "Aceptado"){
+                    setVerify(true)
+                    //redirigirlo al menu usuario
+                }else{
+                    
+                }
+            }
+        )
 
 
 
@@ -25,7 +40,7 @@ const Login = ({navigation})=>{
                 <Text>Inicia sesión con tu correso</Text>
                     <Form>
                         <Item >
-                        <Input placeholder="Username" value={user} onChangeText={(user)=>{setUser(user)}}/>
+                        <Input placeholder="Email" value={email} onChangeText={(email)=>{setEmail(email)}}/>
                         </Item>
                         <Item last >
                         <Input placeholder="Password" value={passwd} onChangeText={(user) => { setPasswd(user) }}/>
