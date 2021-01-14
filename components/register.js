@@ -21,9 +21,9 @@ const Register=({navigation})=>{
         }
         axios.post("https://proyecto-app-web-2020-2.herokuapp.com/users",form).then(
             (res)=>{
-                console.log(res.data.message);
+                console.log(res.data);
                 setState(res.data.message)
-                navigation.navigate('Direcciones', { id: res.data.message })
+                navigation.navigate('Direcciones', { id: res.data.id })
 
             }
         )

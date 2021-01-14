@@ -7,9 +7,33 @@ const Direcciones=({navigation,route})=>{
     const [region   ,setRegion]=     useState('')
     const [calle    ,setCalle]=      useState('')
     const [numero   ,setNumero]=     useState('')
-    const [detalles ,setDetalles]=   useState('')    
-    const postearDireccion=()=>{
+    const [detalles ,setDetalles]=   useState('')
+    const postearDireccion=async ()=>{
         console.log("datos a postear",comuna,provincia,region,calle,numero,detalles,route.params.id);
+        let form={
+            comuna:comuna,
+            provincia:provincia,
+            region:region,
+            calle:calle,
+            numero:numero,
+            detalles:detalles
+        }
+        //1ro: postear direccion
+        axios.post("https://proyecto-app-web-2020-2.herokuapp.com/direcciones", form).then(
+            async (res)=>{
+                console.log("datos de direccion posteada",res.data.direccion,route.params.id);
+                let form_direccion={
+                    direcciones:[res.data.direccion]
+                }
+                axios.put("https://proyecto-app-web-2020-2.herokuapp.com/users/direccion/" + route.params.id, form_direccion).then(
+                    (res)=>{
+                        console.log("postactualizacion",res.data);
+                    }
+                )
+            }
+        )
+        //2do: obtener direccion desde post y actualizar usuario con direcciones
+
         //get 
     }
     return(
