@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Header, Content, Form, Item, Input ,Button,Text,Card} from 'native-base';
-
-const Login = ({navigation})=>{
+import axios from 'axios'
+const Login = ({navigation,route})=>{
     const [email,setEmail] = useState("")
     const [passwd,setPasswd] = useState("")
-    const [verify,setVerify]= useState(false)
     const [conditional, setcond] = useState(false)
     let message=''
     const register=()=>{
@@ -12,19 +11,32 @@ const Login = ({navigation})=>{
     }
     const onPress = () => {
         console.log(email,passwd);
+        console.log("ruta params",route);
+        //route.params.setJWT("aqui estaria el jwt")
         // Conexión a login 
         let form={
             email:email,
-            contrasena:contrasena
+            contrasena:passwd
         }
         axios.post("https://proyecto-app-web-2020-2.herokuapp.com/users/login", form).then(
             (res) => {
                 console.log(res.data);
                 if (res.data.permiso === "Aceptado"){
-                    setVerify(true)
-                    //redirigirlo al menu usuario
+                   console.log(res.data.permiso,"acepta3");
+                     //redirigirlo al menu usuario
+                     let getjwtform={
+                         k:"tel335_key",
+                         s: "tel335_secret",
+                     }
+                     axios.post("https://proyecto-app-web-2020-2.herokuapp.com/auth", getjwtform).then(
+                         (res)=>{
+                             console.log("webtoken",res.data.token);
+                             route.params.setJWT(res.data.token)
+                             console.log("redirigiendo a main server");
+                         }
+                     )
                 }else{
-                    
+                    console.log("mal login, algo paso");
                 }
             }
         )

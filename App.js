@@ -5,14 +5,12 @@ import AppLoading from 'expo-app-loading';
 import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React, { useState } from 'react';
-import { Container, Header, Left, Body, Right, Title } from 'native-base'
+import { Container, Header, Left, Body, Right, Title,Text } from 'native-base'
 
 import Login from './components/login'
 import Register from './components/register'
 import Direcciones from './components/direcciones'
-
-
-const Drawer = createDrawerNavigator();
+import LoginLayout from './contenedores/loginLayout'
 
 const App = () => {
 
@@ -35,25 +33,14 @@ const App = () => {
             onError={console.warn}
         />
     );
-
-    return (
-
-        <NavigationContainer>
-            <Container>
-                <Header >
-                    <Left />
-                    <Body>
-                        <Title>ServiceNow</Title>
-                    </Body>
-                    <Right />
-                </Header>
-                <Drawer.Navigator>
-                    <Drawer.Screen name="Login" component={Login} />
-                    <Drawer.Screen name="Register" component={Register} />
-                    <Drawer.Screen name="Direcciones" component={Direcciones} />
-                </Drawer.Navigator>
-            </Container>
-        </NavigationContainer>
-    )
+    if(jwt==''){
+        return (
+            <LoginLayout setJWT= {setJWT} jwt={jwt}></LoginLayout>
+        )
+    }else{
+        return(
+            <Text>{jwt}</Text>
+        )
+    }
 }
 export default App
