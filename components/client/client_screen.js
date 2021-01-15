@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native'
 
-import ProfileScreen from "./profile"
-import BusinessScreen from "./business"
-import ServiceScreen from "./service"
+import ProfileClientScreen from "./profile"
+import BusinessClientScreen from "./business"
+import ServiceClientScreen from "./service"
 
 const Drawer = createDrawerNavigator();
 
@@ -17,18 +17,19 @@ export default function ClientScreen() {
             <Drawer.Navigator initialRouteName="Negocios">
                 <Drawer.Screen
                     name="Perfil"
-                    component={ProfileScreen}
+                    component={ProfileClientScreen}
                 />
 
                 <Drawer.Screen
                     name="Negocios"
-                    component={BusinessScreen}
+                    component={BusinessClientScreen}
                 />
 
                 <Drawer.Screen
                     name="Servicios de Empresa"
-                    component={ServiceScreen}
+                    component={ServiceClientScreen}
                 />
+
             </Drawer.Navigator>
         </NavigationContainer>
     );

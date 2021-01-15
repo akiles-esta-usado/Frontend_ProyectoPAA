@@ -7,7 +7,7 @@ import { Alert } from "react-native"
 
 
 
-export default function BusinessScreen({ navigation }) {
+export default function BusinessClientScreen({ navigation }) {
     return (
         <Container>
             <Header >

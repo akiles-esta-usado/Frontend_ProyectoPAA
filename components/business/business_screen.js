@@ -1,5 +1,5 @@
 import React from "react";
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView,DrawerItemList,DrawerItem } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native'
 
 import ProfileScreen from "./profile"
@@ -11,7 +11,16 @@ const Drawer = createDrawerNavigator();
 const BusinessScreen = ({jwt,id}) => {
     return (
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Servicios">
+            <Drawer.Navigator initialRouteName="Servicios" drawerContent={props => {
+                return (
+                    <DrawerContentScrollView {...props}>
+                        <DrawerItemList {...props} />
+                        <DrawerItem label="Logout" onPress={() => {
+                            setJWT('')
+                    }} />
+                    </DrawerContentScrollView>
+                )
+            }}>
                 <Drawer.Screen
                     name="Perfil"
                     component={ProfileScreen}

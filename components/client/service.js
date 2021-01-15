@@ -1,11 +1,51 @@
 import React from "react"
-
-import { Container, Content, Text, Header, Left, Button, Icon, Body } from "native-base"
+import {useState,useEffect} from 'react'
+import { Container, Content, Text, Header, Left, Button, Icon, Body ,Spinner} from "native-base"
 
 import ServiceCard from "./service_card"
 
-export default function ServiceScreen({ navigation }) {
-    return (
+export default function ServiceClientScreen({ navigation }) {
+    const [servicios,setServicios]=useState()
+    const [loader,setLoader]=useState(false)
+    useEffect(()=>{
+        const getServicios=async()=>{
+            if(!loader){
+                const allservicios = await axios.get("https://proyecto-app-web-2020-2.herokuapp.com/servicios")
+                if(allservicios.data){
+                    console.log(allservicios.data);
+                    setServicios(allservicios.data)
+                    setLoader(true)
+                }
+            }
+        }
+    })
+    if(servicios){
+        return (
+            <Container>
+                <Header >
+                    <Left>
+                        <Button
+                            transparent
+                            onPress={() => navigation.openDrawer()}
+                        >
+                            <Icon name='menu' />
+                        </Button>
+                    </Left>
+    
+                    <Body>
+                        <Text>Lista de Servicios</Text>
+                    </Body>
+    
+                </Header>
+    
+                <Content padder>
+                    {servicios.map((element)=>
+                        <ServiceCard key={element} nombre={element.nombre} precio={element.precio} descripcion={element.descripcion}/>
+                    )}
+                </Content>
+            </Container>
+        )
+    }else{
         <Container>
             <Header >
                 <Left>
@@ -24,13 +64,8 @@ export default function ServiceScreen({ navigation }) {
             </Header>
 
             <Content padder>
-
-                <ServiceCard />
-                <ServiceCard />
-                <ServiceCard />
-                <ServiceCard />
-
+                <Spinner color="red"></Spinner>
             </Content>
         </Container>
-    )
+    }
 }

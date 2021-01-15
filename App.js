@@ -42,11 +42,11 @@ const App = () => {
         )
     } else if (sesion.tipo=='facilitador'){
         return(
-            <Business_Screen jwt={jwt} id={sesion.id}/>
+            <Business_Screen setJWT={setJWT}  jwt={jwt} id={sesion.id}/>
         )
     }else if(sesion.tipo=='cliente'){
         return(
-            <ClientScreen jwt={jwt} ></ClientScreen>
+            <ClientScreen setJWT={setJWT} jwt={jwt} ></ClientScreen>
         )
     }
 }
