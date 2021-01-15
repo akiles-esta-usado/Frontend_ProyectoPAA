@@ -5,14 +5,16 @@ import Register from '../components/register'
 import Direcciones from '../components/direcciones'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { Button, Icon } from 'native-base'
 
 const Stack = createStackNavigator();
 let loader=true
-const LoginLayout = ({ setJWT, jwt, setSesion})=>{
+const LoginLayout = ({ setJWT, jwt, setSesion, setState})=>{
     return(
         <NavigationContainer>
         <Stack.Navigator>
-                <Stack.Screen name="Login" component={Login} initialParams={{ setJWT: setJWT, setSesion: setSesion}}/>
+                <Stack.Screen name="Login" component={Login} initialParams={{ setJWT: setJWT, setSesion: setSesion}}
+                options={{ headerLeft: () => (<Icon name='arrow-back-outline' onPress={() => setState('')} style={{ marginLeft: 10 }} />) }} />
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Direcciones" component={Direcciones} />
         </Stack.Navigator>

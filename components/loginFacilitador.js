@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Header, Content, Form, Item, Input, Button, Text, Card } from 'native-base';
 import axios from 'axios'
+import { BackHandler } from 'react-native';
+
 const LoginFacilitador = ({ navigation, route }) => {
     const [email, setEmail] = useState("")
     const [passwd, setPasswd] = useState("")
@@ -9,6 +11,15 @@ const LoginFacilitador = ({ navigation, route }) => {
     const register = () => {
         navigation.navigate('RegisterFacilitador')
     }
+    const handleBackButtonClick=()=>{
+        route.params.setState('')
+    }
+    useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+        return () => {
+            BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
+        };
+    }, []);
     const onPress = () => {
         console.log(email, passwd);
         console.log("ruta params", route);
@@ -48,7 +59,6 @@ const LoginFacilitador = ({ navigation, route }) => {
     }
     return (
         <Container className="mx-2" >
-
             <Content style={{ marginRight: 5, marginLeft: 5, marginTop: 10 }}>
                 <Text>Inicia sesión con tu correo</Text>
                 <Form>

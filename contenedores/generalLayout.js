@@ -19,12 +19,12 @@ const GeneralLayout = ({ jwt, setJWT, setSesion})=>{
     if(state==='cliente'){
         console.log("desde cliente",state);
         return(
-            <LoginLayout setJWT={setJWT} jwt={jwt} setSesion={setSesion}></LoginLayout>
+            <LoginLayout setJWT={setJWT} jwt={jwt} setSesion={setSesion} setState={setState}></LoginLayout>
         )
     }else if(state==='facilitador'){
         console.log("desde facilitador",state);
         return(
-            <LoginFacilitadorLayout setJWT={setJWT} jwt={jwt} setSesion={setSesion}></LoginFacilitadorLayout>
+            <LoginFacilitadorLayout setJWT={setJWT} jwt={jwt} setSesion={setSesion} setState={setState}></LoginFacilitadorLayout>
         )
     }
     else {
