@@ -56,7 +56,7 @@ const LoginFacilitador = ({ navigation, route }) => {
                         <Input placeholder="Email" value={email} onChangeText={(email) => { setEmail(email) }} />
                     </Item>
                     <Item last >
-                        <Input placeholder="Password" value={passwd} onChangeText={(user) => { setPasswd(user) }} />
+                        <Input placeholder="Password" value={passwd} secureTextEntry={true} onChangeText={(user) => { setPasswd(user) }} />
                     </Item>
                 </Form>
                 <Button onPress={onPress} block disabled={conditional} class="mb-1"><Text>Log In</Text></Button>
