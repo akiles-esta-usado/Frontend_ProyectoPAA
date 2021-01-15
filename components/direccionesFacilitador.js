@@ -65,7 +65,7 @@ const DireccionesFacilitador = ({ navigation, route }) => {
                         <Input placeholder="Detalles" value={detalles} onChangeText={(detalles) => { setDetalles(detalles) }} />
                     </Item>
                 </Form>
-                <Button block onPress={postearDireccion}><Text>Ingresar Dirección</Text></Button>
+                <Button block onPress={postearDireccion}><Text>Ingresar Dirección </Text></Button>
 
             </Content>
         </Container>

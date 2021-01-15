@@ -2,7 +2,7 @@ import React from "react";
 
 import { Header, Button, Container, Text, Body, Left, Right, Icon, Content, Card, CardItem } from "native-base"
 
-const ProfileScreen = ({ navigation }) => {
+const ProfileClientScreen = ({ navigation }) => {
     return (
         <Container>
             <Header >
@@ -45,4 +45,4 @@ const ProfileScreen = ({ navigation }) => {
     );
 }
 
-export default ProfileScreen;
+export default ProfileClientScreen;

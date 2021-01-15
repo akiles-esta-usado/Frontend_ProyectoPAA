@@ -40,13 +40,14 @@ const App = () => {
         return (
             <GeneralLayout setJWT={setJWT} jwt={jwt} setSesion={setSesion}></GeneralLayout>
         )
+
     } else if (sesion.tipo == 'facilitador') {
         return (
-            <Business_Screen jwt={jwt} id={sesion.id} />
+            <Business_Screen setJWT={setJWT} jwt={jwt} id={sesion.id} />
         )
     } else if (sesion.tipo == 'cliente') {
         return (
-            <ClientScreen jwt={jwt} id={sesion.id} ></ClientScreen>
+            <ClientScreen setJWT={setJWT} jwt={jwt} id={sesion.id} ></ClientScreen>
         )
     }
 

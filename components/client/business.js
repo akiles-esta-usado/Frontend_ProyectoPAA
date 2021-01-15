@@ -7,9 +7,7 @@ import { Alert } from "react-native"
 import axios from 'axios'
 
 
-
-
-export default function BusinessScreen({ navigation }) {
+export default function BusinessClientScreen({ navigation }) {
     const [loaded, setLoaded] = useState(false);
 
     const [facilitadores, setFacilitadores] = useState([])

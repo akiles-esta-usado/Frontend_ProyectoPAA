@@ -1,6 +1,6 @@
 import React from "react";
 import {useEffect,useState} from 'react';
-import { Header, Button, Container, Text, Body, Left, Right, Icon, Content, Card, CardItem ,H3} from "native-base"
+import { Header, Button, Container, Text, Body, Left, Right, Icon, Content, Card, CardItem ,H3,Spinner} from "native-base"
 import axios from 'axios'
 const ProfileScreen = ({ navigation ,route}) => {
     const [profile,setProfile]=useState()
@@ -99,7 +99,7 @@ const ProfileScreen = ({ navigation ,route}) => {
             </Container>
         );
     }else{
-        return(<Container><Text>hola</Text></Container>)
+        return(<Container><Header /><Content><Spinner color="blue"></Spinner></Content></Container>)
     }
 }
 
