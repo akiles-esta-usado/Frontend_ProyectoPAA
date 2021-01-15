@@ -1,21 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native'
-import ProfileUserScreen from './profileUserScreen'
+
+import ProfileScreen from "./profile"
+import BusinessScreen from "./business"
+import ServiceScreen from "./service"
 
 const Drawer = createDrawerNavigator();
 
-const ClientScreen = () => {
+export default function ClientScreen() {
+
+    const [hasServices, setServices] = useState(false);
+
     return (
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Servicios">
+            <Drawer.Navigator initialRouteName="Negocios">
                 <Drawer.Screen
-                    name="PerfilUsuario"
-                    component={ProfileUserScreen}
+                    name="Perfil"
+                    component={ProfileScreen}
+                />
+
+                <Drawer.Screen
+                    name="Negocios"
+                    component={BusinessScreen}
+                />
+
+                <Drawer.Screen
+                    name="Servicios de Empresa"
+                    component={ServiceScreen}
                 />
             </Drawer.Navigator>
         </NavigationContainer>
     );
 }
-
-export default ClientScreen;
