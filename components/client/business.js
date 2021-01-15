@@ -1,13 +1,35 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 
 import { Header, Button, Container, Text, Body, Left, Right, Icon, Content, Card, CardItem } from "native-base"
 
 import { Alert } from "react-native"
 
+import axios from 'axios'
+
 
 
 
 export default function BusinessScreen({ navigation }) {
+    const [loaded, setLoaded] = useState(false);
+
+    const [facilitadores, setFacilitadores] = useState([])
+
+    useEffect(() => {
+        if (loaded) return;
+
+        const fetchFacilitadores = async () => {
+            const datos = await axios.get("https://proyecto-app-web-2020-2.herokuapp.com/facilitador/")
+
+            if (datos.data) {
+                console.log(datos.data)
+                setFacilitadores(datos.data)
+                setLoaded(true)
+            }
+        }
+
+        fetchFacilitadores()
+    })
+
     return (
         <Container>
             <Header >
@@ -21,7 +43,7 @@ export default function BusinessScreen({ navigation }) {
                 </Left>
 
                 <Body>
-                    <Text>Lista de Empresas</Text>
+                    <Text>Lista de Facilitadores</Text>
                 </Body>
 
                 <Right>
@@ -31,9 +53,9 @@ export default function BusinessScreen({ navigation }) {
 
 
             <Content padder>
-                <BusinessCard />
-                <BusinessCard />
-                <BusinessCard />
+                <BusinessCard data1 />
+                <BusinessCard data2 />
+                <BusinessCard data3 />
             </Content>
         </Container>
     )
@@ -63,7 +85,7 @@ function BusinessCard(props) {
             <CardItem header bordered>
                 <Left>
                     <Text>
-                        Nombre de Empresa
+                        Nombre de Facilitador
                     </Text>
                 </Left>
 
@@ -74,14 +96,6 @@ function BusinessCard(props) {
                 </Right>
             </CardItem>
 
-            <CardItem>
-
-                <Body>
-                    <Text>
-                        Descripción breve de empresa
-                    </Text>
-                </Body>
-            </CardItem>
         </Card>
     )
 }

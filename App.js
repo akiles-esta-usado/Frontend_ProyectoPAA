@@ -5,7 +5,7 @@ import AppLoading from 'expo-app-loading';
 import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React, { useState } from 'react';
-import { Container, Header, Left, Body, Right, Title,Text } from 'native-base'
+import { Container, Header, Left, Body, Right, Content, Text } from 'native-base'
 
 import Login from './components/login'
 import Register from './components/register'
@@ -17,8 +17,8 @@ import ClientScreen from './components/client/client_screen';
 const App = () => {
 
     const [isReady, setReady] = useState(false)
-    const [jwt,setJWT]=useState('')
-    const [sesion,setSesion]=useState({tipo:'',id:''})
+    const [jwt, setJWT] = useState('')
+    const [sesion, setSesion] = useState({ tipo: '', id: '' })
 
     async function loadFonts() {
         await Font.loadAsync({
@@ -36,18 +36,28 @@ const App = () => {
             onError={console.warn}
         />
     );
-    if(jwt==''){
+    if (jwt == '') {
         return (
             <GeneralLayout setJWT={setJWT} jwt={jwt} setSesion={setSesion}></GeneralLayout>
         )
-    } else if (sesion.tipo=='facilitador'){
-        return(
-            <Business_Screen jwt={jwt} id={sesion.id}/>
+    } else if (sesion.tipo == 'facilitador') {
+        return (
+            <Business_Screen jwt={jwt} id={sesion.id} />
         )
-    }else if(sesion.tipo=='cliente'){
-        return(
-            <ClientScreen jwt={jwt} ></ClientScreen>
+    } else if (sesion.tipo == 'cliente') {
+        return (
+            <ClientScreen jwt={jwt} id={sesion.id} ></ClientScreen>
         )
     }
+
+    console.log("tipo de sesión: " + sesion.tipo)
+
+    return (
+        <Container style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+            <Content>
+                <Text>Algo ha ido mal :(</Text>
+            </Content>
+        </Container>
+    )
 }
 export default App
