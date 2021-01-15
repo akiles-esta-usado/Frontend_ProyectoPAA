@@ -8,7 +8,7 @@ import ServiceRegisterScreen from "./service_register"
 
 const Drawer = createDrawerNavigator();
 
-const BusinessScreen = ({jwt,id}) => {
+const BusinessScreen = ({jwt,id,setJWT}) => {
     return (
         <NavigationContainer>
             <Drawer.Navigator initialRouteName="Servicios" drawerContent={props => {

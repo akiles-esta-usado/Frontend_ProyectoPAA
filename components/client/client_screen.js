@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native'
 
 import ProfileClientScreen from "./profile"
@@ -8,10 +8,19 @@ import ServiceClientScreen from "./service"
 
 const Drawer = createDrawerNavigator();
 
-export default function ClientScreen({ jwt, id }) {
+export default function ClientScreen({ jwt, id ,setJWT}) {
     return (
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Negocios">
+            <Drawer.Navigator initialRouteName="Negocios" drawerContent={props => {
+                return (
+                    <DrawerContentScrollView {...props}>
+                        <DrawerItemList {...props} />
+                        <DrawerItem label="Logout" onPress={() => {
+                            setJWT('')
+                        }} />
+                    </DrawerContentScrollView>
+                )
+            }}>
 
                 <Drawer.Screen
                     name="Perfil"
