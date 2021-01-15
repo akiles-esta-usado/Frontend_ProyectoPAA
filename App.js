@@ -10,12 +10,15 @@ import { Container, Header, Left, Body, Right, Title,Text } from 'native-base'
 import Login from './components/login'
 import Register from './components/register'
 import Direcciones from './components/direcciones'
-import LoginLayout from './contenedores/loginLayout'
+import Business_Screen from './components/business/business_screen'
+import GeneralLayout from './contenedores/generalLayout'
+import ClientScreen from './components/client/client_screen';
 
 const App = () => {
 
     const [isReady, setReady] = useState(false)
     const [jwt,setJWT]=useState('')
+    const [sesion,setSesion]=useState('')
 
     async function loadFonts() {
         await Font.loadAsync({
@@ -35,11 +38,15 @@ const App = () => {
     );
     if(jwt==''){
         return (
-            <LoginLayout setJWT= {setJWT} jwt={jwt}></LoginLayout>
+            <GeneralLayout setJWT={setJWT} jwt={jwt} setSesion={setSesion}></GeneralLayout>
         )
-    }else{
+    } else if (sesion=='facilitador'){
         return(
-            <Text>{jwt}</Text>
+            <Business_Screen jwt={jwt}/>
+        )
+    }else if(sesion=='cliente'){
+        return(
+            <ClientScreen jwt={jwt}></ClientScreen>
         )
     }
 }

@@ -8,11 +8,11 @@ import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 let loader=true
-const LoginLayout=({setJWT,jwt})=>{
+const LoginLayout = ({ setJWT, jwt, setSesion})=>{
     return(
         <NavigationContainer>
         <Stack.Navigator>
-                <Stack.Screen name="Login" component={Login} initialParams={{ setJWT: setJWT}}/>
+                <Stack.Screen name="Login" component={Login} initialParams={{ setJWT: setJWT, setSesion: setSesion}}/>
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Direcciones" component={Direcciones} />
         </Stack.Navigator>

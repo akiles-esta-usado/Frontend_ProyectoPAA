@@ -31,6 +31,7 @@ const Login = ({navigation,route})=>{
                      axios.post("https://proyecto-app-web-2020-2.herokuapp.com/auth", getjwtform).then(
                          (res)=>{
                              console.log("webtoken",res.data.token);
+                             route.params.setSesion('cliente')
                              route.params.setJWT(res.data.token)
                              console.log("redirigiendo a main server");
                          }
