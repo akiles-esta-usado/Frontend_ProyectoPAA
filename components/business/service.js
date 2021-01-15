@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Container, Content, Text, Header, Left, Button, Icon, Body,Right,H3 } from "native-base"
+import { Container, Content, Text, Header, Left, Button, Icon, Body,Right,H3,Spinner } from "native-base"
 import {useState,useEffect} from 'react'
 import ServiceCard from "./service_card"
 import axios from 'axios'
@@ -49,19 +49,18 @@ const ServiceScreen=({ navigation ,route})=> {
     
                 <Content padder>
                     {profile.servicios.map((element)=>
-                        <ServiceCard nombre={element.nombre} descripcion={element.descripcion} precio={element.precio}/>
+                        <ServiceCard nombre={element.nombre} descripcion={element.descripcion} precio={element.precio} key={element.nombre}/>
                     )}
     
                 </Content>
             </Container>
         )
     }else{
-        return(
-            <Container>
-                <Text>Loading</Text>
-            </Container>
+        
+        return (<Container><Header /><Content><Spinner color="blue"></Spinner></Content></Container>)
 
-        )
+
+        
     }
 }
 export default ServiceScreen
