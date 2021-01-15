@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Container, Content, Text, Header, Left, Button, Icon, Body } from "native-base"
+import { Container, Content, Text, Header, Left, Button, Icon, Body,Right,H3 } from "native-base"
 
 import ServiceCard from "./service_card"
 
@@ -18,17 +18,22 @@ export default function ServiceScreen({ navigation }) {
                 </Left>
 
                 <Body>
-                    <Text>Lista de Servicios</Text>
+                    <H3 style={{color:"white",fontSize:18}}>Lista de Servicios</H3>
                 </Body>
+                <Right>
+                    <Button
+                        transparent
+                        onPress={() => navigation.navigate("Registrar Servicios")}
+                    >
+                        <Icon name='add' />
+                    </Button>
+                </Right>
 
             </Header>
 
             <Content padder>
 
-                <ServiceCard />
-                <ServiceCard />
-                <ServiceCard />
-                <ServiceCard />
+                <ServiceCard nombre={"hola"} descripcion={"buenardo"} precio={"15000"}/>
 
             </Content>
         </Container>

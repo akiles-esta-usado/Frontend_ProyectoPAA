@@ -2,26 +2,26 @@ import React from "react"
 
 import { Card, CardItem, Text, Body } from "native-base"
 
-export default function ServiceCard() {
+export default function ServiceCard({nombre,descripcion,precio}) {
     return (
         <Card>
             <CardItem header bordered>
                 <Text>
-                    Nombre del Servicio
+                    {nombre}
                 </Text>
             </CardItem>
 
             <CardItem>
                 <Body>
                     <Text>
-                        Descripción del Servicio
+                        {descripcion}
                     </Text>
                 </Body>
             </CardItem>
 
             <CardItem footer bordered>
                 <Text>
-                    Precio del Servicio
+                    {precio}
                 </Text>
             </CardItem>
         </Card>

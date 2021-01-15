@@ -18,7 +18,7 @@ const App = () => {
 
     const [isReady, setReady] = useState(false)
     const [jwt,setJWT]=useState('')
-    const [sesion,setSesion]=useState('')
+    const [sesion,setSesion]=useState({tipo:'',id:''})
 
     async function loadFonts() {
         await Font.loadAsync({
@@ -40,13 +40,13 @@ const App = () => {
         return (
             <GeneralLayout setJWT={setJWT} jwt={jwt} setSesion={setSesion}></GeneralLayout>
         )
-    } else if (sesion=='facilitador'){
+    } else if (sesion.tipo=='facilitador'){
         return(
-            <Business_Screen jwt={jwt}/>
+            <Business_Screen jwt={jwt} id={sesion.id}/>
         )
-    }else if(sesion=='cliente'){
+    }else if(sesion.tipo=='cliente'){
         return(
-            <ClientScreen jwt={jwt}></ClientScreen>
+            <ClientScreen jwt={jwt} ></ClientScreen>
         )
     }
 }

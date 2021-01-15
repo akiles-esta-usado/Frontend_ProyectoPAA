@@ -29,10 +29,10 @@ const LoginFacilitador = ({ navigation, route }) => {
                         s: "tel335_secret",
                     }
                     axios.post("https://proyecto-app-web-2020-2.herokuapp.com/auth", getjwtform).then(
-                        (res) => {
-                            console.log("webtoken", res.data.token);
-                            route.params.setSesion('facilitador')
-                            route.params.setJWT(res.data.token)
+                        (tok) => {
+                            console.log("webtoken", tok.data.token);
+                            route.params.setSesion({tipo:'facilitador',id:res.data.id})
+                            route.params.setJWT(tok.data.token)
                             console.log("redirigiendo a main server");
                         }
                     )

@@ -8,21 +8,25 @@ import ServiceRegisterScreen from "./service_register"
 
 const Drawer = createDrawerNavigator();
 
-const BusinessScreen = () => {
+const BusinessScreen = ({jwt,id}) => {
     return (
         <NavigationContainer>
             <Drawer.Navigator initialRouteName="Servicios">
                 <Drawer.Screen
                     name="Perfil"
                     component={ProfileScreen}
+                    initialParams={{ jwt: jwt, id: id }}
+                    
                 />
                 <Drawer.Screen
                     name="Servicios"
                     component={ServiceScreen}
+                    initialParams={{ jwt: jwt, id: id }}
                 />
                 <Drawer.Screen
                     name="Registrar Servicios"
                     component={ServiceRegisterScreen}
+                    initialParams={{ jwt: jwt, id: id }}
                 />
             </Drawer.Navigator>
         </NavigationContainer>
