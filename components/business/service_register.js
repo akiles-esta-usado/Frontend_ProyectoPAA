@@ -25,7 +25,7 @@ export default function ServiceRegisterScreen({ navigation ,route}) {
                         console.log(res.data);
                         if(res.data.status=="OK"){
                             console.log("usuario editado correctamente");
-                            navigation.navigate("Perfil")
+                            navigation.navigate("Servicios")
                         }else{
                             console.log("ocurrio un problema al registrar el servicio al usuario");
                         }

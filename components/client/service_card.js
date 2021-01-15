@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Card, CardItem, Text, Body } from "native-base"
+import { Card, CardItem, Text, Body ,Button} from "native-base"
 
 export default function ServiceCard({ nombre,precio,descripcion}) {
     return (
@@ -23,6 +23,9 @@ export default function ServiceCard({ nombre,precio,descripcion}) {
                 <Text>
                     {descripcion}
                 </Text>
+            </CardItem>
+            <CardItem footer bordered>
+                <Button block style={{width:"100%"}}><Text>Contratar este servicio</Text></Button>
             </CardItem>
         </Card>
     )
